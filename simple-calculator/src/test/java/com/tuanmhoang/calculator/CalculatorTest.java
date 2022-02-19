@@ -11,4 +11,9 @@ public class CalculatorTest {
       assertEquals(5, Calculator.sum(2,3));
    }
 
+   @Test
+   public void givenTwoNumber_whenMinusIsCalled_thenReturnResult(){
+      assertEquals(-1, Calculator.minus(2,3));
+   }
+
 }
