@@ -182,11 +182,14 @@ Create token on Jenkins
 
 ![image](https://user-images.githubusercontent.com/37680968/154472234-f4bcada7-11f0-4585-b5fc-81ac7d73359c.png)
 
+Sample response
 
+
+```
+{"_class":"hudson.model.FreeStyleBuild","actions":[{"_class":"hudson.model.ParametersAction","parameters":[{"_class":"hudson.plugins.promoted_builds.parameters.PromotedBuildParameterValue","name":"Accepted to Prod","jobName":"prodJob","number":"45"}]},{"_class":"hudson.model.CauseAction","causes":[{"_class":"hudson.model.Cause$UserIdCause","shortDescription":"Started by user Tuan","userId":"tuamhoang","userName":"Tuan"}]},{},{"_class":"org.jenkinsci.plugins.displayurlapi.actions.RunDisplayAction"}],"artifacts":[],"building":false,"description":null,"displayName":"#1","duration":6864,"estimatedDuration":6864,"executor":null,"fullDisplayName":"deploy_cloud #1","id":"1","keepLog":false,"number":1,"queueId":123,"result":"SUCCESS","timestamp":1645096909329,"url":"http://localhost:8081/jenkins/job/deploy_cloud/1/","builtOn":"","changeSet":{"_class":"hudson.scm.EmptyChangeLogSet","items":[],"kind":null},"culprits":[]}* Connection #0 to host localhost left intact
+```
 
 ## Pipeline flow
-
-
 
 ## Problem and solution
 
@@ -226,3 +229,19 @@ Caused by: org.codehaus.cargo.container.tomcat.internal.TomcatManagerException: 
 **Solution**
 
 Add role `manager-script`
+
+**Problem**
+
+Using `curl  -s --user <username>:<token> http://localhost:8081/job/deploy_cloud/lastBuild/api/json`
+
+HTTP ERROR 401 Unauthorized
+
+***Solution**
+
+Some discussion:
+
+https://github.com/jenkinsci/oic-auth-plugin/issues/25
+
+https://github.com/jenkinsci/oic-auth-plugin/issues/41
+
+Check for the username and password if it is correct
