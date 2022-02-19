@@ -7,6 +7,10 @@ public class Dummy {
     }
 
     public void feature2(){
+
+    }
+
+    public void feature3(){
         
     }
 }
