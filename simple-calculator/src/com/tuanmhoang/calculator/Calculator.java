@@ -10,4 +10,8 @@ public class Calculator {
         return a - b;
     }
 
+    public static Integer multiply(Integer a, Integer b) {
+        return a * b;
+    }
+
 }
