@@ -184,12 +184,35 @@ Create token on Jenkins
 
 Sample response
 
-
 ```
 {"_class":"hudson.model.FreeStyleBuild","actions":[{"_class":"hudson.model.ParametersAction","parameters":[{"_class":"hudson.plugins.promoted_builds.parameters.PromotedBuildParameterValue","name":"Accepted to Prod","jobName":"prodJob","number":"45"}]},{"_class":"hudson.model.CauseAction","causes":[{"_class":"hudson.model.Cause$UserIdCause","shortDescription":"Started by user Tuan","userId":"tuamhoang","userName":"Tuan"}]},{},{"_class":"org.jenkinsci.plugins.displayurlapi.actions.RunDisplayAction"}],"artifacts":[],"building":false,"description":null,"displayName":"#1","duration":6864,"estimatedDuration":6864,"executor":null,"fullDisplayName":"deploy_cloud #1","id":"1","keepLog":false,"number":1,"queueId":123,"result":"SUCCESS","timestamp":1645096909329,"url":"http://localhost:8081/jenkins/job/deploy_cloud/1/","builtOn":"","changeSet":{"_class":"hudson.scm.EmptyChangeLogSet","items":[],"kind":null},"culprits":[]}* Connection #0 to host localhost left intact
 ```
 
 ## Pipeline flow
+
+![image](https://user-images.githubusercontent.com/37680968/154924124-8b2f73f8-b830-4dd7-8457-a1750e815ec3.png)
+
+- Can select build tool `Maven` or `Gradle`
+
+- Input name of job
+
+- Choose separated job. If yes, it triggers `None-pipeline > qaJob` and `None-pipeline > prodJob`. If no, it doesn't trigger the job.
+
+![image](https://user-images.githubusercontent.com/37680968/154925668-3e8da505-3ebc-4c48-91a3-281dd03aafdb.png)
+
+When finish QA step, there will be a gateway which asks to proceed to production
+
+![image](https://user-images.githubusercontent.com/37680968/154926241-35b59f40-2ed5-431b-8156-c0b9382cc152.png)
+
+QA job is integrated with promotion plugin 
+
+![image](https://user-images.githubusercontent.com/37680968/154926470-e1476213-bd25-4ccc-ab75-d0640bcff550.png)
+
+Production job is also integrated with promotion plugin and is given star manually
+
+![image](https://user-images.githubusercontent.com/37680968/154926713-3371a260-99f4-481c-8692-c502a850c5c3.png)
+
+![image](https://user-images.githubusercontent.com/37680968/154926919-4eb4d276-41d1-4bf5-9f26-73d377294e5c.png)
 
 ## Problem and solution
 
